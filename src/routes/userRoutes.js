@@ -3,7 +3,7 @@ const userController = require('../controllers/userController');
 
 const router = express.Router();
 
-router.get('/a', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const results = await userController.getAll();
     res.status(200).json({ results });
