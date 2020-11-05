@@ -16,6 +16,11 @@ app.use((error, req, res, next) => {
   if (error.name === 'MongoError' && error.code === 11000) {
     return res.status(400).json({ message: error.message });
   }
+
+  if (error.type === 'ValidationError') {
+    return res.status(error.code).json({error})
+  }
+
   res.status(500).json({ error: error.message });
 });
 
