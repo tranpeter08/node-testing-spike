@@ -24,7 +24,7 @@ describe('GET /api/users', () => {
     await User.insertMany(users);
 
     // perform the GET request
-    const res = await supertest(app).get('/api/users');
+    const res = await supertest(app).get('/api/users-');
 
     expect(res.status).to.equal(200);
     expect(res.body.results.length).to.equal(3);
