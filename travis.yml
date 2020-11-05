@@ -2,5 +2,3 @@ language: node_js
 branches:
   only:
   - travis-ci
-before_install:
-  - npm i
