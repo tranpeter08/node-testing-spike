@@ -2,7 +2,6 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const { MONGO_URI, PORT, dbConnectionOptns } = require('./config/serverConfig');
 const app = require('./app');
-const { connectDb } = require('./utils/dbHelpers');
 
 async function startServer(app, mongoUri, port) {
   try {
