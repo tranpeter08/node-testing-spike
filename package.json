@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "mocha src/test --recursive --exit",
+    "test": "mocha src/test --recursive --parallel --exit",
     "coverage": "nyc npm test"
   },
   "author": "",
