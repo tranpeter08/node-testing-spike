@@ -8,7 +8,7 @@ const { expect } = require('chai');
 const app = require('../../../app');
 const User = require('../../../models/User');
 
-describe.skip('POST /api/users/create', () => {
+describe('POST /api/users/create', () => {
   before(async () => {
     await connectTestDb()
   });
@@ -33,6 +33,8 @@ describe.skip('POST /api/users/create', () => {
 
   it('responds with an error when creating a duplicate username', async () => {
     const username = 'Lisa';
+    await User.ensureIndexes(); 
+    // ^ for some reason unique indexes were not working, this fixes that
     await User.create({username});
 
     const resp = await supertest(app)
