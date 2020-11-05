@@ -20,6 +20,4 @@ async function startServer(app, mongoUri, port) {
   }
 }
 
-if (require.main === module) {
-  startServer(app, MONGO_URI, PORT);
-}
+startServer(app, MONGO_URI, PORT);

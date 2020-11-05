@@ -26,13 +26,8 @@ describe('GET /api/users', () => {
     // perform the GET request
     const res = await supertest(app).get('/api/users');
 
-    const {
-      body: { results },
-      status,
-    } = res;
-
-    expect(status).to.equal(200);
-    expect(results.length).to.equal(3);
-    expect(results[0].name).to.equal(users[0].name);
+    expect(res.status).to.equal(200);
+    expect(res.body.results.length).to.equal(3);
+    expect(res.body.results[0].name).to.equal(users[0].name);
   });
 });

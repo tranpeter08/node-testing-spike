@@ -5,7 +5,7 @@ const apiRouter = require('./routes/router');
 
 const app = express();
 
-app.use(express.json(), helmet(), morgan('short'));
+app.use(express.json(), helmet());
 
 app.use('/api', apiRouter);
 app.get('/', (req, res, next) => {
@@ -13,7 +13,9 @@ app.get('/', (req, res, next) => {
 });
 
 app.use((error, req, res, next) => {
-  console.log(error);
+  if (error.name === 'MongoError' && error.code === 11000) {
+    return res.status(400).json({ message: error.message });
+  }
   res.status(500).json({ error: error.message });
 });
 

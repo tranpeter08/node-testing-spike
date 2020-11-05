@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "mocha src/test --recursive --exit",
+    "test": "mocha src/test --recursive --parallel --exit",
     "test-cover": "nyc mocha src/test --recursive --exit"
   },
   "author": "",
@@ -25,11 +25,12 @@
     "supertest": "^6.0.0"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.1.1",
-    "morgan": "^1.10.0",
-    "mongoose": "^5.10.11"
+    "mongoose": "^5.10.11",
+    "morgan": "^1.10.0"
   }
 }

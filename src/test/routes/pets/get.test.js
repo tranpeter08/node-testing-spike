@@ -15,14 +15,14 @@ describe('GET /api/pets', () => {
     await connectTestDb();
   });
 
-  afterEach(async () => {
-    // clear all collections after each test
-    await clearCollections();
-  });
-
   after(async () => {
     // after all tests are done, drop the database and disconnect to the database
     await destroyDb();
+  });
+
+  afterEach(async () => {
+    // clear all collections after each test
+    await clearCollections();
   });
 
   it('responds with pets that belong to a user', async () => {

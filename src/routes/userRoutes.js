@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
 router.post('/create', async function (req, res, next) {
   try {
     const result = await userController.create(req.body);
-    res.status(200).json({ result });
+    res.status(201).json({ id: result._id });
   } catch (error) {
     next(error);
   }
