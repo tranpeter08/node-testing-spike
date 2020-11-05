@@ -4,7 +4,7 @@ const petController = require('../controllers/petController');
 
 const router = express.Router();
 
-router.get('/t', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const { userId } = req.query;
 
