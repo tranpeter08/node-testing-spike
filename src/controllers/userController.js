@@ -14,6 +14,11 @@ module.exports = {
   },
 
   async create(user) {
+    // const match = await User.findOne({username: user.username});
+
+    // if (match) {
+    //   throw {type: 'ValidationError', message: 'Invalid username', code: 400}
+    // }
     return await User.create(user);
   },
 
