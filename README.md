@@ -1,4 +1,5 @@
 ![GitHub Logo](https://github.com/tranpeter08/node-testing-spike/workflows/Node.js%20CI/badge.svg)
+[![codecov](https://codecov.io/gh/tranpeter08/node-testing-spike/branch/main/graph/badge.svg?token=Y222VBMZ5Q)](https://codecov.io/gh/tranpeter08/node-testing-spike)
 
 # Node API Testing Spike
 A repo to research testing libraries and CI/CD pipelines
