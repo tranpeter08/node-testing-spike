@@ -8,7 +8,7 @@ const { expect } = require('chai');
 const app = require('../../../app');
 const User = require('../../../models/User');
 
-describe('POST /api/users/create', () => {
+describe.skip('POST /api/users/create', () => {
   before(async () => {
     await connectTestDb()
   });
