@@ -4,7 +4,8 @@ orbs:
 workflows:
   node-tests:
     jobs:
-      - node/test
-  branches:
-    only: 
-      - circle-ci
+      - node/test:
+        filters:
+          branches: 
+            only: 
+              - circle-ci
