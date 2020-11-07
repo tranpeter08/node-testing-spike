@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "mocha src/test --recursive --parallel --exit",
+    "test": "mocha src/test --recursive --exit",
+    "test-parallel": "npm test --parallel",
     "coverage": "nyc npm test"
   },
   "author": "",
@@ -22,6 +23,7 @@
     "nock": "^13.0.4",
     "nodemon": "^2.0.6",
     "nyc": "^15.1.0",
+    "sinon": "^9.2.1",
     "supertest": "^6.0.0"
   },
   "dependencies": {
