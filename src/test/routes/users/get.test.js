@@ -3,6 +3,7 @@ const supertest = require('supertest');
 const app = require('../../../app');
 const { destroyDb, connectTestDb } = require('../../../utils/dbHelpers');
 const User = require('../../../models/User');
+const sinon = require('sinon');
 
 describe('GET /api/users', () => {
   before(async () => {
@@ -30,4 +31,15 @@ describe('GET /api/users', () => {
     expect(res.body.results.length).to.equal(3);
     expect(res.body.results[0].name).to.equal(users[0].name);
   });
+
+  it('responds with status 500 on error', async () => {
+    const stub = sinon.stub(User, 'find');
+    stub.rejects({message: 'Mock Error'});
+
+    const res = await supertest(app).get('/api/users');
+
+    expect(res.status).to.equal(500);
+    expect(res.body).to.have.property('error', 'Mock Error');
+  })
 });
+
