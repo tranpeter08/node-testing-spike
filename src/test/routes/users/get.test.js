@@ -33,6 +33,7 @@ describe('GET /api/users', () => {
   });
 
   it('responds with status 500 on error', async () => {
+    // stub the "find" method in the "User" model so that it returns a rejected promise
     const stub = sinon.stub(User, 'find');
     stub.rejects({message: 'Mock Error'});
 
