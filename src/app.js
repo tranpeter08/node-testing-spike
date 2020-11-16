@@ -6,9 +6,32 @@ const apiRouter = require('./routes/router');
 const app = express();
 
 app.use(express.json(), helmet());
-
 app.use('/api', apiRouter);
-app.get('/', (req, res, next) => {
+
+/**
+ * @swagger
+ * /test:
+ *   get:
+ *     summary: Test for server response
+ *     description: Test for server response
+ *     responses:
+ *       '200':
+ *         description: Payload.
+ *         content: 
+ *           application/json:
+ *             schema: 
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       '400':
+ *         description: Bad request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResp'     
+ */
+app.get('/test', (req, res, next) => {
   res.send({ message: 'ok!' });
 });
 
