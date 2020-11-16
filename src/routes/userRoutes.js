@@ -23,6 +23,8 @@ const router = express.Router();
  *                     properties:
  *                       _id:
  *                         type: string
+ *                       username:
+ *                         type: string
  *       '400':
  *         description: Bad request
  *         content: 
@@ -47,14 +49,91 @@ router.get('/', async (req, res, next) => {
 
 /**
  * @swagger
- * {
- *  "/api/users/create": {
- *    "post": {
- *       "summary": "Create a user"
- *    }
- *  }
- * }
+ *  {
+    "/api/users/create": {
+      "post": {
+          "summary": "Create a user",
+          "requestBody": {
+            required: true,
+            content: {
+              "application/json":{
+                schema: {
+                  type: 'object',
+                  properties: {
+                    username: {
+                      type: 'string',
+                      example: 'SuperMario'
+                    }
+                  }
+                }
+              }
+            }
+          },
+          responses: {
+            200: {
+              description: 'Success!',
+              content: {
+                "application/json":{
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      id: {
+                        type: 'string'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+      }
+    }
+  }
  */
+
+
+const t = 
+  {
+    "/api/users/create": {
+      "post": {
+          "summary": "Create a user",
+          "requestBody": {
+            required: true,
+            content: {
+              "application/json":{
+                schema: {
+                  type: 'object',
+                  properties: {
+                    username: {
+                      type: 'string',
+                      example: 'SuperMario'
+                    }
+                  }
+                }
+              }
+            }
+          },
+          responses: {
+            200: {
+              description: 'Success!',
+              content: {
+                "application/json":{
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      id: {
+                        type: 'string'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+      }
+    }
+  }
+
 router.post('/create', async function (req, res, next) {
   try {
     const result = await userController.create(req.body);
