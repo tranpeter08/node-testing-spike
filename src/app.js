@@ -5,7 +5,7 @@ const apiRouter = require('./routes/router');
 
 const app = express();
 
-app.use(express.json(), helmet());
+app.use(express.json(), helmet(), morgan('tiny'));
 app.use('/api', apiRouter);
 
 /**
