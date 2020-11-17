@@ -24,7 +24,7 @@ describe('POST /api/users/create', () => {
   it('responds with a user id on success', async () => {
     // I am using a simple User schema with just a username
     const resp = await supertest(app)
-      .post('/api/users/create')
+      .post('/api/users')
       .send({ username: 'Natasha' }); //  send a request body
 
     expect(resp.status).to.equal(201);
@@ -38,7 +38,7 @@ describe('POST /api/users/create', () => {
     await User.create({username});
 
     const resp = await supertest(app)
-      .post('/api/users/create')
+      .post('/api/users')
       .send({username});
 
     expect(resp.status).to.equal(400);
