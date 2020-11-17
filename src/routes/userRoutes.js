@@ -8,6 +8,8 @@ const router = express.Router();
  * /api/users:
  *   get:
  *     summary: Gets all users
+ *     tags:
+ *       - users
  *     responses:
  *       '200':
  *         description: Responds with an array of users
@@ -50,9 +52,10 @@ router.get('/', async (req, res, next) => {
 /**
  * @swagger
  *  {
-    "/api/users/create": {
+    "/api/users": {
       "post": {
           "summary": "Create a user",
+          "tags": ["users"],
           "requestBody": {
             required: true,
             content: {
@@ -62,9 +65,12 @@ router.get('/', async (req, res, next) => {
                   properties: {
                     username: {
                       type: 'string',
-                      example: 'SuperMario'
+                      example: 'SuperMario',
                     }
-                  }
+                  },
+                  required: [
+                    'username'
+                  ]
                 }
               }
             }
@@ -78,7 +84,8 @@ router.get('/', async (req, res, next) => {
                     type: 'object',
                     properties: {
                       id: {
-                        type: 'string'
+                        type: 'string',
+                        example: '5fb37b8672c339da1f6a487d'
                       }
                     }
                   }
@@ -94,7 +101,7 @@ router.get('/', async (req, res, next) => {
 
 const t = 
   {
-    "/api/users/create": {
+    "/api/users": {
       "post": {
           "summary": "Create a user",
           "requestBody": {
@@ -106,9 +113,12 @@ const t =
                   properties: {
                     username: {
                       type: 'string',
-                      example: 'SuperMario'
+                      example: 'SuperMario',
                     }
-                  }
+                  },
+                  required: [
+                    'username'
+                  ]
                 }
               }
             }
@@ -134,7 +144,7 @@ const t =
     }
   }
 
-router.post('/create', async function (req, res, next) {
+router.post('/', async function (req, res, next) {
   try {
     const result = await userController.create(req.body);
     res.status(201).json({ id: result._id });
