@@ -7,8 +7,8 @@ const swaggerSpec = swaggerJsDoc(swaggerOptns);
 
 router.use('/', swaggerUi.serve);
 router.get('/', swaggerUi.setup(swaggerSpec));
-router.get('/openapi-specs', (req, res) => {
-  res.json(swaggerSpec);
+router.get('/swagger.json', (req, res) => {
+  return res.json(swaggerSpec);
 })
 
 module.exports = router;

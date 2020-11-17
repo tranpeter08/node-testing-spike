@@ -28,4 +28,4 @@ http://localhost:8000/api/docs
 
 To view the OpenAPI Specs, use this link:
 
-http://localhost:8000/api/docs/openapi-specs
+http://localhost:8000/api/docs/swagger.json
