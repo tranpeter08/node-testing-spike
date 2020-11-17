@@ -1,4 +1,5 @@
 const schemas = require('./schemas');
+const parameters = require('./parameters');
 
 const options = {
   definition: {
@@ -6,13 +7,19 @@ const options = {
     info: {
       title: 'API Documentation Spike', // Title (required)
       version: '1.0.0', // Version (required)
+      description: 'An API for spiking.',
+      contact: {
+        name: 'Robin Hood',
+        emal: 'greenhat@blackforest.com'
+      }
     },
     components: {
-      schemas
+      schemas,
+      parameters
     }
   },
   // Path to the API docs
-  apis: ['./src/app.js', './src/routes/*.js', '.src/documentation/**/*.js'],
+  apis: ['./src/app.js', './src/routes/*.js'],
 
 };
 
