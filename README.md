@@ -14,18 +14,18 @@ A repo to research testing libraries, CI/CD pipelines and documentation.
 
 ## API Documentation
 
-1. Start the app by running 
+1. Start the app by running
 
-`npm start`
+   `npm start`
 
-or to run in the dev environment,  
+   or to run in the dev environment,  
 
-`npm run dev`
+   `npm run dev`
 
 2. Navigate to this link to see the documentation:
 
-http://localhost:8000/api/docs
+   http://localhost:8000/api/docs
 
-To view the OpenAPI Specs, use this link:
+   To view the OpenAPI Specs, use this link:
 
-http://localhost:8000/api/docs/swagger.json
+   http://localhost:8000/api/docs/swagger.json
