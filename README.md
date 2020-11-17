@@ -14,7 +14,7 @@ A repo to research testing libraries, CI/CD pipelines and documentation.
 
 ## API Documentation
 
-Start the app by running 
+1. Start the app by running 
 
 `npm start`
 
@@ -22,7 +22,7 @@ or to run in the dev environment,
 
 `npm run dev`
 
-Navigate to this link to see the documentation:
+2. Navigate to this link to see the documentation:
 
 http://localhost:8000/api/docs
 
