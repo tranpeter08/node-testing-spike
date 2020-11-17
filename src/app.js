@@ -13,6 +13,8 @@ app.use('/api', apiRouter);
  * /test:
  *   get:
  *     summary: Test for server response
+ *     tags:
+ *       - app
  *     description: Test for server response
  *     responses:
  *       '200':
