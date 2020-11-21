@@ -40,7 +40,7 @@ const router = express.Router();
  *         content: 
  *           application/json:
  *             schema: 
- *               $ref: '#/components/schemas/ErrorResp'
+ *               $ref: '#/components/schemas/ErrorRespBody'
  *            
  */
 router.get('/', async (req, res, next) => {
@@ -66,7 +66,7 @@ router.get('/', async (req, res, next) => {
  *   post:
  *     summary: 'Creates a pet'
  *     parameters:
- *       - $ref: '#/components/parameters/userIdQueryParam'
+ *       - $ref: '#/components/parameters/UserIdQueryParam'
  *     tags:
  *       - pets
  *     requestBody:
@@ -74,7 +74,7 @@ router.get('/', async (req, res, next) => {
  *       content: 
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/PetsReqBodyCreate'
+ *             $ref: '#/components/schemas/PetsCreateReqBody'
  *     responses:
  *       '201':
  *         description: Responds with the pet ID
