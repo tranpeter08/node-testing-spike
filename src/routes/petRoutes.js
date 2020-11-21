@@ -52,7 +52,7 @@ router.get('/', async (req, res, next) => {
     }
 
     const results = await petController.getAllByUserId(userId);
-    res.status(200).json({ results });
+    res.status(200).json(results);
   } catch (error) {
     next(error);
   }
@@ -92,13 +92,7 @@ router.get('/', async (req, res, next) => {
  */
 router.post('/', async (req, res, next) => {
   try {
-    const { userId } = req.query;
-
-    if (!userId) {
-      return res.status(400).json({ message: 'Missing user_id parameter' });
-    }
-
-    const petDoc = await petController.create({userId, ...req.body});
+    const petDoc = await petController.create(req.body);
     res.status(201).json({id: petDoc._id});
 
   } catch (error) {

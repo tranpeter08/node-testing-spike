@@ -14,13 +14,13 @@ const router = express.Router();
  *       '200':
  *         $ref: '#/components/responses/GetAllUsersResp'
  *       '400':
- *         $ref: '#/components/responses/ErrorRespBody'
+ *         $ref: '#/components/responses/ErrorResp'
  *            
  */
 router.get('/', async (req, res, next) => {
   try {
     const results = await userController.getAll();
-    res.status(200).json({ results });
+    res.status(200).json(results);
   } catch (error) {
     next(error);
   }
