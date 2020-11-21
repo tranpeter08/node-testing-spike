@@ -32,6 +32,6 @@ A repo to research testing libraries, CI/CD pipelines and documentation.
 
    http://localhost:8000/api/docs/swagger.json
 
-### Postman
+### Postman [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1564e72fb07f8b47f243)
 
   [API Documentation](https://documenter.getpostman.com/view/4490688/TVetcmhq)
