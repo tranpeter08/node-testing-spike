@@ -1,5 +1,5 @@
 module.exports = {
-  userIdQueryParam: {
+  UserIdQueryParam: {
     name: 'userId',
     in: 'query',
     description: 'A user\'s ID',
