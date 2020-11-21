@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const apiRouter = require('./routes/router');
+const path = require('path');
 
 const app = express();
 
@@ -13,9 +14,9 @@ app.use('/api', apiRouter);
  * /test:
  *   get:
  *     summary: Test for server response
- *     tags:
- *       - app
  *     description: Test for server response
+ *     tags:
+ *     - app
  *     responses:
  *       '200':
  *         description: Payload.
@@ -26,15 +27,20 @@ app.use('/api', apiRouter);
  *               properties:
  *                 message:
  *                   type: string
+ *                   example: 'ok!'
  *       '400':
  *         description: Bad request
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/ErrorResp'     
+ *               $ref: '#/components/schemas/ErrorRespBody'     
  */
 app.get('/test', (req, res, next) => {
   res.send({ message: 'ok!' });
+});
+
+app.get('/redoc', (req, res, next) => {
+  res.sendFile(path.join(__dirname + '/../redoc.html'));
 });
 
 app.use((error, req, res, next) => {
