@@ -9,34 +9,12 @@ const router = express.Router();
  *   get:
  *     summary: Gets all users
  *     tags:
- *       - users
+ *     - users
  *     responses:
  *       '200':
- *         description: Responds with an array of users
- *         content: 
- *           application/json:
- *             schema: 
- *               type: object
- *               properties:
- *                 results:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       _id:
- *                         type: string
- *                       username:
- *                         type: string
+ *         $ref: '#/components/responses/GetAllUsersResp'
  *       '400':
- *         description: Bad request
- *         content: 
- *           application/json:
- *             schema: 
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: Invalid ID
+ *         $ref: '#/components/responses/ErrorRespBody'
  *            
  */
 router.get('/', async (req, res, next) => {
@@ -49,101 +27,27 @@ router.get('/', async (req, res, next) => {
 });
 
 
+
+// This route uses JSON formatting for documentation
 /**
  * @swagger
  *  {
     "/api/users": {
       "post": {
-          "summary": "Create a user",
-          "tags": ["users"],
-          "requestBody": {
-            required: true,
-            content: {
-              "application/json":{
-                schema: {
-                  type: 'object',
-                  properties: {
-                    username: {
-                      type: 'string',
-                      example: 'SuperMario',
-                    }
-                  },
-                  required: [
-                    'username'
-                  ]
-                }
-              }
-            }
-          },
-          responses: {
-            200: {
-              description: 'Success!',
-              content: {
-                "application/json":{
-                  schema: {
-                    type: 'object',
-                    properties: {
-                      id: {
-                        type: 'string',
-                        example: '5fb37b8672c339da1f6a487d'
-                      }
-                    }
-                  }
-                }
-              }
-            }
+        "summary": "Create a user",
+        "tags": ["users"],
+        "requestBody": {
+          $ref: '#/components/requestBodies/UserCreateBody'
+        },
+        responses: {
+          201: {
+            $ref: '#/components/responses/CreateSuccessResp'
           }
+        }
       }
     }
   }
  */
-
-
-const t = 
-  {
-    "/api/users": {
-      "post": {
-          "summary": "Create a user",
-          "requestBody": {
-            required: true,
-            content: {
-              "application/json":{
-                schema: {
-                  type: 'object',
-                  properties: {
-                    username: {
-                      type: 'string',
-                      example: 'SuperMario',
-                    }
-                  },
-                  required: [
-                    'username'
-                  ]
-                }
-              }
-            }
-          },
-          responses: {
-            200: {
-              description: 'Success!',
-              content: {
-                "application/json":{
-                  schema: {
-                    type: 'object',
-                    properties: {
-                      id: {
-                        type: 'string'
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-      }
-    }
-  }
-
 router.post('/', async function (req, res, next) {
   try {
     const result = await userController.create(req.body);
