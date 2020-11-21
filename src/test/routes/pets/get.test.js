@@ -41,7 +41,7 @@ describe('GET /api/pets', () => {
     // perform the GET request
     const res = await supertest(app).get(`/api/pets?userId=${_id}`);
     const {
-      body: { results },
+      body: results,
     } = res;
 
     expect(results.length).to.equal(3);

@@ -28,8 +28,8 @@ describe('GET /api/users', () => {
     const res = await supertest(app).get('/api/users');
 
     expect(res.status).to.equal(200);
-    expect(res.body.results.length).to.equal(3);
-    expect(res.body.results[0].name).to.equal(users[0].name);
+    expect(res.body.length).to.equal(3);
+    expect(res.body[0].name).to.equal(users[0].name);
   });
 
   it('responds with status 500 on error', async () => {
