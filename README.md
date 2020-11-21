@@ -14,6 +14,8 @@ A repo to research testing libraries, CI/CD pipelines and documentation.
 
 ## API Documentation
 
+### SwaggerUI
+
 1. Start the app by running
 
    `npm start`
@@ -29,3 +31,7 @@ A repo to research testing libraries, CI/CD pipelines and documentation.
    To view the OpenAPI Specs, use this link:
 
    http://localhost:8000/api/docs/swagger.json
+
+### Postman
+
+[API Documentation](https://documenter.getpostman.com/view/4490688/TVetcmhq)
