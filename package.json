@@ -35,6 +35,8 @@
     "helmet": "^4.1.1",
     "mongoose": "^5.10.11",
     "morgan": "^1.10.0",
+    "redoc": "^2.0.0-rc.45",
+    "redoc-express": "^1.0.0",
     "swagger-jsdoc": "^5.0.1",
     "swagger-ui-express": "^4.1.4"
   }
