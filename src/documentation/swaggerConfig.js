@@ -1,5 +1,7 @@
 const schemas = require('./schemas');
 const parameters = require('./parameters');
+const responses = require('./responses');
+const requestBodies = require('./requestBodies');
 
 const options = {
   definition: {
@@ -15,7 +17,9 @@ const options = {
     },
     components: {
       schemas,
-      parameters
+      parameters,
+      responses,
+      requestBodies
     }
   },
   // Path to the API docs
