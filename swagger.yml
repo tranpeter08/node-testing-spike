@@ -1,0 +1,215 @@
+---
+openapi: 3.0.0
+info:
+  title: API Documentation Spike
+  version: 1.0.0
+  description: An API for spiking.
+  contact:
+    name: Robin Hood
+    email: greenhat@blackforest.com
+servers:
+  - url: http://localhost:8000
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+          example: SuperMario
+        _id:
+          type: string
+          example: 5fb37b8672c339da1f6a487d
+      required:
+      - username
+    UserCreateReqBody:
+      type: object
+      properties:
+        username:
+          type: string
+          example: SuperMario
+      required:
+      - username
+    PetsCreateReqBody:
+      type: object
+      description: Request body for creating a pet
+      properties:
+        name:
+          description: The pet's name
+          type: string
+          example: Hachiko
+        type:
+          description: The pet type
+          type: string
+          example: Loyal dog
+    ErrorRespBody:
+      type: object
+      description: Error response
+      properties:
+        message:
+          type: string
+          description: The error message
+          example: "'Invalid ID'"
+        errCode:
+          type: string
+          description: |-
+            ## Error Code Descriptions:
+            1. `ERROR_CODE_1` description...
+            2. `ERROR_CODE_2` description....
+          example: "'SOME_ERROR_CODE'"
+        statusCode:
+          type: integer
+          description: 'Description: Status code for the response'
+          example: 400
+  parameters:
+    UserIdQueryParam:
+      name: userId
+      in: query
+      description: A user's ID
+      required: true
+      schema:
+        type: string
+        example: 5fb37b8672c339da1f6a487d
+  responses:
+    CreateSuccessResp:
+      description: Response when a document has been successfully created
+      content:
+        application/json:
+          schema:
+            type: object
+            description: Response body for creating a document
+            properties:
+              id:
+                description: The document _id
+                type: string
+                example: 5fb37b8672c339da1f6a487d
+    GetAllUsersResp:
+      description: Responds with all users
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              "$ref": "#/components/schemas/User"
+    ErrorResp:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            type: object
+            "$ref": "#/components/schemas/ErrorRespBody"
+  requestBodies:
+    UserCreateBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              username:
+                type: string
+                example: SuperMario
+            required:
+            - username
+paths:
+  "/test":
+    get:
+      summary: Test for server response
+      description: Test for server response
+      tags:
+      - app
+      responses:
+        '200':
+          description: Payload.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: ok!
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorRespBody"
+  "/api/pets":
+    get:
+      summary: Gets all pets by user id
+      parameters:
+      - in: query
+        name: userId
+        required: true
+        schema:
+          type: string
+          example: 5fb37b8672c339da1f6a487d
+      tags:
+      - pets
+      responses:
+        '200':
+          description: Responds with an array of pets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        username:
+                          type: string
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorRespBody"
+    post:
+      summary: Creates a pet
+      parameters:
+      - "$ref": "#/components/parameters/UserIdQueryParam"
+      tags:
+      - pets
+      requestBody:
+        description: Request body for creating a pet
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/PetsCreateReqBody"
+      responses:
+        '201':
+          description: Responds with the pet ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 5fb37c34714abfda5e39df9b
+  "/api/users":
+    get:
+      summary: Gets all users
+      tags:
+      - users
+      responses:
+        '200':
+          "$ref": "#/components/responses/GetAllUsersResp"
+        '400':
+          "$ref": "#/components/responses/ErrorResp"
+    post:
+      summary: Create a user
+      tags:
+      - users
+      requestBody:
+        "$ref": "#/components/requestBodies/UserCreateBody"
+      responses:
+        '201':
+          "$ref": "#/components/responses/CreateSuccessResp"
+tags: []
