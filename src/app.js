@@ -6,7 +6,7 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.json(), helmet(), morgan('tiny'));
+app.use(express.json(), helmet({contentSecurityPolicy: false}), morgan('tiny'));
 app.use('/api', apiRouter);
 
 /**
